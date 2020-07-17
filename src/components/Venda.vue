@@ -159,8 +159,7 @@
       </article>
 
       <div class="column form-footer">
-        <router-link class="button button-outline" to="/item/vendas">Cancel</router-link>
-        <button class="button">Save</button>
+        <button class="button">Salvar</button>
       </div>
     </form>
   </div>
@@ -181,6 +180,7 @@ export default {
       console.log(this.venda);
       $venda.save(this.venda).then(res => {
         console.log(res);
+        this.venda = {};
       });
     }
   }

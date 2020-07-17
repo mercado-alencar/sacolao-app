@@ -1,24 +1,44 @@
 import Request from '@schirrel/request/Request.js';
-
+import RequestObservable from '@/services/RequestObservable.js';
+import { uniqueId } from '../utils/Util.js';
 const defaultURL = "http://localhost:8081";
 export default class APIRequest {
 
-    constructor(uri, useDefault) {
-        this.uri = `${useDefault ?defaultURL:'' }${uri}`;
+    constructor(uri, useDefault, globalRequests) {
+        this.uri = `${useDefault ? defaultURL : ''}${uri}`;
+        this._observable = new RequestObservable(globalRequests);
     }
 
-/**
- * @param {String} id
- * @returns {Function} Promise
- */
-    get(id) {
-        return Request.get(this.uri + '/' + id);
+    loading(observable) {
+        this._observable.watch(observable)
     }
-/**
- * @returns {Function} Promise
- */
+
+    perform(request) {
+        let id = uniqueId();
+        this._observable.updateRequests(id);
+        return new Promise((resolve, reject) => {
+            request.then((res => {
+                resolve(res);
+            })).catch(err => {
+                reject(err);
+            }).finally(() => {
+                this._observable.updateRequests(id, true);
+            });
+        })
+    }
+
+    /**
+     * @param {String} id
+     * @returns {Function} Promise
+     */
+    get(id) {
+        return this.perform(Request.get(this.uri + '/' + id))
+    }
+    /**
+     * @returns {Function} Promise
+     */
     all() {
-        return Request.get(this.uri);  
+        return this.perform(Request.get(this.uri));
     }
     /**
  * @param {Object} model
@@ -27,9 +47,9 @@ export default class APIRequest {
 
     save(model) {
         if (model.id) {
-            return Request.put(this.uri+ '/' + id, {body: JSON.stringify(model) });
-        }else 
-        return Request.post(this.uri, {body: JSON.stringify(model) });
+            return this.perform(Request.put(this.uri + '/' + model.id, { body: JSON.stringify(model) }));
+        } else
+            return this.perform(Request.post(this.uri, { body: JSON.stringify(model) }));
     }
     /**
      * 
@@ -38,8 +58,8 @@ export default class APIRequest {
      */
     pagination(params) {
         params.page = params.page || 1;
-        params.limit = params.limit || 10; 
-        return Request.get(`${this.uri}/pagination`,params);
+        params.limit = params.limit || 10;
+        return this.perform(Request.get(`${this.uri}/pagination`, params));
     }
     /**
      * 
@@ -47,6 +67,6 @@ export default class APIRequest {
      * @returns Promise
      */
     search(params) {
-        return Request.get(this.uri+'/search', params);
+        return this.perform(Request.get(this.uri + '/search', params))
     }
 }

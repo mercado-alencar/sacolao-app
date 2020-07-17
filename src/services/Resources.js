@@ -1,7 +1,10 @@
-
 import APIRequest from './ApiRequest';
+import RequestObservable from '@/services/RequestObservable.js';
 
-
-export const $product = new APIRequest('http://localhost:3000/api/product');
-export const $employee = new APIRequest('http://localhost:3000/api/employee');
-export const $venda = new APIRequest('/api/venda', true);
+const observable = new RequestObservable();
+export const $product = new APIRequest('http://localhost:3000/api/product', false, observable);
+export const $employee = new APIRequest('http://localhost:3000/api/employee', false, observable);
+let venda = new APIRequest('/api/venda', true, observable);
+venda.entrega = new APIRequest('/api/venda/entrega', true, observable);
+export const $venda = venda;
+export const watchRequest = callback => observable.watch(callback);

@@ -1,39 +1,54 @@
 <template>
- <div class="container">
-      <ol>
-        <template
-          v-show="data.collection && data.collection.length"
-          v-for="(item, index) in data.collection"
-        >
-          <li :key="index">
-          <h3>  {{item.nome}} ({{item.sacolao ? "Sacolão "+item.sacolao :""}} {{ item.compras ? "Compras R$"+item.compras:""}}) - Bairro {{item.bairro }}</h3>
+  <div class="container">
+    <h1 v-show="loading">Carregando</h1>
+
+    <ol v-show="!loading">
+      <template
+        v-show="data.collection && data.collection.length"
+        v-for="(item, index) in data.collection"
+      >
+        <li :key="index">
+          <h3>{{item.nome}} ({{item.sacolao ? "Sacolão "+item.sacolao :""}} {{ item.compras ? "Compras R$"+item.compras:""}}) - Bairro {{item.bairro }}</h3>
           <div>
-           Endereço: <strong>{{item.endereco}} {{item.numero ? ", Nº"+item.numero:""}} {{item.bairro ? ", bairro "+item.bairro+".":""}}</strong> </br>
-           <span v-if="item.referencia"> Referência:{{item.referencia}} </span>
+            Endereço:
+            <strong>{{item.endereco}} {{item.numero ? ", Nº"+item.numero:""}} {{item.bairro ? ", bairro "+item.bairro+".":""}}</strong>
+            <br />
+            <span v-if="item.referencia">Referência:{{item.referencia}}</span>
           </div>
-        <!--  <template         
+          <!--  <template         
           v-for="(prop, index2) of item">
         {{index2}}:  <strong :key="index2"> {{prop}}  </strong> | 
           </template>-->
-          <button style="float:right"type="button">Entregue</button>
-          </li>
-        </template>
-      </ol>
+          <button @click="entregue($event, item)" type="button">Entregue</button>
+        </li>
+      </template>
+    </ol>
   </div>
 </template>
 
 <script>
-
 import { $venda } from "@/services/Resources";
 export default {
   name: "Entregas",
   data() {
-    return {data:{}};
+    return { data: {}, loading: false };
   },
-  mounted () {
-    $venda.search({ entregue:false}).then((res)=>{
-      this.data  = {collection:res};
+  mounted() {
+    $venda.loading(res => {
+      this.loading = res;
     });
+
+    this.listar();
+  },
+  methods: {
+    listar() {
+      $venda.search({ entregue: false }).then(res => {
+        this.data = { collection: res };
+      });
+    },
+    entregue($event, item) {
+      $venda.entrega.save({id: item.id, entregue: true}).then(this.listar);
+    }
   }
 };
 </script>
@@ -98,14 +113,15 @@ input[type="date"] {
 .half-width {
   width: 50%;
 }
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 h3 {
   margin-bottom: 0;
   padding-bottom: 0;
 }
- li{
-   border-bottom:1px solid
- }
+li {
+  border-bottom: 1px solid;
+}
 </style>
