@@ -15,13 +15,6 @@
             <br />
             <span v-if="item.referencia">Referência:{{item.referencia}}</span>
           </div>
-          <!--  <template         
-          v-for="(prop, index2) of item">
-        {{index2}}:  <strong :key="index2"> {{prop}}  </strong> | 
-          </template>-->
-          <footer>
-            <button @click="entregue($event, item)" type="button">Entregue</button>
-          </footer>
         </li>
       </template>
     </ol>
@@ -31,7 +24,7 @@
 <script>
 import { $venda } from "@/services/Resources";
 export default {
-  name: "Entregas",
+  name: "Rotas",
   data() {
     return { data: {}, loading: false };
   },
@@ -48,14 +41,6 @@ export default {
       $venda.search({ entregue: false }).then(res => {
         this.data = { collection: res };
       });
-    },
-    entregue($event, item) {
-      $venda.entrega
-        .save({ id: item.id, entregue: true })
-        .then(this.listar)
-        .catch(err => {
-          alert(JSON.stringify(err));
-        });
     }
   }
 };

@@ -3,10 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Venda from '@/components/Venda'
 import Entregas from '@/components/Entregas'
-import Product from '@/components/items/Product'
-import Products from '@/components/items/Products'
-import Employees from '@/components/items/Employees'
-import Employee from '@/components/items/Employee'
+import Rotas from '@/components/Rotas'
 import Login from '@/pages/Login'
 import Logout from '@/pages/Logout'
 import Secure from '@/pages/Secure'
@@ -61,47 +58,55 @@ let routes =  [
           title: 'Entregas',
           secure:true
         }
-      },
-      {
-        path: '/item/products',
-        name: 'secure.item.products',
-        component: Products,
+      }, {
+        path: '/rotas',
+        name: 'secure.rotas',
+        component: Rotas,
         meta: {
-          title: 'Products',
+          title: 'Rotas',
           secure:true
-        },
-          component: () => import(/* webpackChunkName: "item" */ '../components/items/Products.vue')
+        }
       },
-      {
-        path: '/item/product',
-        name: 'secure.item.product',
-        component: Product,
-        meta: {
-          title: 'Product',
-          secure:true
-        },
-          component: () => import(/* webpackChunkName: "item" */ '../components/items/Product.vue')
-      },
-      {
-        path: '/item/employee',
-        name: 'secure.item.employee',
-        component: Employee,
-        meta: {
-          title: 'Employee',
-          secure:true
-        },
-        component: () => import(/* webpackChunkName: "item" */ '../components/items/Employee.vue')
-      },
-      {
-        path: '/item/employees',
-        name: 'secure.item.employees',
-        component: Employees,
-        meta: {
-          title: 'Employees',
-          secure:true
-        },
-        component: () => import(/* webpackChunkName: "item" */ '../components/items/Employees.vue')
-      }
+      // {
+      //   path: '/item/products',
+      //   name: 'secure.item.products',
+      //   component: Products,
+      //   meta: {
+      //     title: 'Products',
+      //     secure:true
+      //   },
+      //     component: () => import(/* webpackChunkName: "item" */ '../components/items/Products.vue')
+      // },
+      // {
+      //   path: '/item/product',
+      //   name: 'secure.item.product',
+      //   component: Product,
+      //   meta: {
+      //     title: 'Product',
+      //     secure:true
+      //   },
+      //     component: () => import(/* webpackChunkName: "item" */ '../components/items/Product.vue')
+      // },
+      // {
+      //   path: '/item/employee',
+      //   name: 'secure.item.employee',
+      //   component: Employee,
+      //   meta: {
+      //     title: 'Employee',
+      //     secure:true
+      //   },
+      //   component: () => import(/* webpackChunkName: "item" */ '../components/items/Employee.vue')
+      // },
+      // {
+      //   path: '/item/employees',
+      //   name: 'secure.item.employees',
+      //   component: Employees,
+      //   meta: {
+      //     title: 'Employees',
+      //     secure:true
+      //   },
+      //   component: () => import(/* webpackChunkName: "item" */ '../components/items/Employees.vue')
+      // }
     ]
   }, 
   

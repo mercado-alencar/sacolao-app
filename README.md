@@ -21,4 +21,4 @@ Projects i've used as reference, some for structure, some for build, some for ro
 - boilerplate [@iagocavalcante](https://github.com/iagocavalcante/boilerplate)
 - skeleton-quasar [@quasarframeworkbrasil](https://github.com/quasarframeworkbrasil/skeleton-quasar)
 - vue-enterprise-boilerplate [@chrisvfritz](https://github.com/chrisvfritz/vue-enterprise-boilerplate)
-- vue-argon-dashboard [@creativetim](https://github.com/creativetimofficial/vue-argon-dashboard)
+- express-arch [@flpms](https://github.com/flpms/express-arch)

@@ -5,9 +5,7 @@
         <h1 class="title">Company</h1>
       </a>
       <ul class="navigation-list float-right">
-        <li class="navigation-item">
-          <router-link class="navigation-link" to="/">Home </router-link>
-        </li>
+       
         <li class="navigation-item">
           <router-link class="navigation-link" to="/venda">Venda </router-link>
         </li>
@@ -15,24 +13,9 @@
           <router-link class="navigation-link" to="/entregas">Entregas </router-link>
         </li>
         <li class="navigation-item">
-          <a class="navigation-link" href="#popover-item" data-popover=""
-            >Items</a
-          >
-          <div class="popover" id="popover-item">
-            <ul class="popover-list">
-              <li class="popover-item">
-                <router-link class="popover-link" to="/item/products"
-                  >Products</router-link
-                >
-              </li>
-              <li class="popover-item">
-                <router-link class="popover-link" to="/item/employees"
-                  >Employees</router-link
-                >
-              </li>
-            </ul>
-          </div>
+          <router-link class="navigation-link" to="/rotas">Rotas </router-link>
         </li>
+  
 
            <li class="navigation-item">
           <a class="navigation-link" href="#popover-me" data-popover=""
