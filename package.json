@@ -1,8 +1,8 @@
 {
-  "name": "batskeleton",
+  "name": "sacolao-web-app",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "Alan Schio<iagoangelimc@gmail.com>",
+  "description": "Front web app for delivery management",
+  "author": "Alan Schio<alanbschio@gmail.com>",
   "private": true,
   "scripts": {
     "webpack-dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js --host  0.0.0.0 --hot",
