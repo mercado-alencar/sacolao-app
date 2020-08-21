@@ -1,4 +1,4 @@
-import Storage from '@/services/Storage';
+import Storage from '@/utils/Storage';
 import Request from '@/services/ApiRequest';
 
 export default class Auth {

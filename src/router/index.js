@@ -7,11 +7,11 @@ import Rotas from '@/components/Rotas'
 import Login from '@/pages/Login'
 import Logout from '@/pages/Logout'
 import Secure from '@/pages/Secure'
-import Storage from '../services/Storage'
+import Storage from '../utils/Storage'
 
 Vue.use(Router);
 
-const APP_TITLE= 'Company'
+const APP_TITLE= 'Mercado Alencar'
 
 let routes =  [
   {
@@ -32,15 +32,16 @@ let routes =  [
     component: Secure,
     meta: {
       title: 'Secure',
-      secure:true
+     // secure:true
     }, children: [
       {
         path: '/',
         name: 'secure.home',
+        redirect: '/venda',
         component: Home,
         meta: {
           title: 'Home',
-          secure:true
+         // secure:true
         }
       }, {
         path: '/venda',
@@ -48,7 +49,7 @@ let routes =  [
         component: Venda,
         meta: {
           title: 'Venda',
-          secure:true
+         // secure:true
         }
       }, {
         path: '/entregas',
@@ -56,7 +57,7 @@ let routes =  [
         component: Entregas,
         meta: {
           title: 'Entregas',
-          secure:true
+          //secure:true
         }
       }, {
         path: '/rotas',
@@ -64,7 +65,7 @@ let routes =  [
         component: Rotas,
         meta: {
           title: 'Rotas',
-          secure:true
+         // secure:true
         }
       },
       // {
@@ -128,7 +129,7 @@ router.beforeEach((to, from, next) => {
   
   } else {
     next({
-      path: '/login',
+      path: '/venda',
       params: { nextUrl: to.fullPath }
   })
 }

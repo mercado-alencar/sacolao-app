@@ -2,7 +2,7 @@
   <nav class="navigation">
     <section class="container">
       <a class="navigation-title">
-        <h1 class="title">Company</h1>
+        <h1 class="title"></h1>
       </a>
       <ul class="navigation-list float-right">
        
@@ -21,20 +21,6 @@
           <a class="navigation-link" href="#popover-me" data-popover=""
             >Me</a
           >
-          <div class="popover" id="popover-me">
-            <ul class="popover-list">
-              <li class="popover-item">
-                <router-link class="popover-link" to="/profile"
-                  >Profile</router-link
-                >
-              </li>
-              <li class="popover-item">
-                <router-link class="popover-link" to="/logout"
-                  >Logout</router-link
-                >
-              </li>
-            </ul>
-          </div>
         </li>
 
       </ul>
@@ -125,7 +111,7 @@ export default {
 }
 
 .navigation .img {
-  fill: #9b4dca;
+  fill: #1834c8;
   height: 2rem;
   position: relative;
   top: 0.3rem;
@@ -177,7 +163,7 @@ export default {
 .navigation-dropdown > input[type="checkbox"] + label {
   cursor: pointer;
   font-weight: normal;
-  color: #9b4dca;
+  color: #1834c8;
 }
 .navigation-dropdown
   > input[type="checkbox"]:checked

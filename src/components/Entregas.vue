@@ -20,6 +20,8 @@
         {{index2}}:  <strong :key="index2"> {{prop}}  </strong> | 
           </template>-->
           <footer>
+            <button @click="reimprimir($event, item)" type="button">Reimprimir</button>
+
             <button @click="entregue($event, item)" type="button">Entregue</button>
           </footer>
         </li>
@@ -36,7 +38,7 @@ export default {
     return { data: {}, loading: false };
   },
   mounted() {
-    $venda.loading(res => {
+    $venda.loading((res) => {
       this.loading = res;
     });
 
@@ -45,7 +47,7 @@ export default {
   methods: {
     listar() {
       // this.data = { collection: [] };
-      $venda.search({ entregue: false }).then(res => {
+      $venda.search({ entregue: false }).then((res) => {
         this.data = { collection: res };
       });
     },
@@ -53,11 +55,11 @@ export default {
       $venda.entrega
         .save({ id: item.id, entregue: true })
         .then(this.listar)
-        .catch(err => {
+        .catch((err) => {
           alert(JSON.stringify(err));
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -132,11 +134,13 @@ h3 {
 li {
   border-bottom: 1px solid;
 }
-footer
-{
+footer {
   width: 100%;
   display: block;
   position: relative;
   text-align: right;
+}
+footer > * {
+  margin: 4px;
 }
 </style>

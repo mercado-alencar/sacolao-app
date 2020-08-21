@@ -62,8 +62,8 @@
 
 .header .img path {
     animation: 7s a forwards;
-    fill: #9b4dca;
-    stroke: #9b4dca;
+    fill: #1834c8;
+    stroke: #1834c8;
     stroke-dasharray: 38321;
     stroke-miterlimit: 10;
     stroke-width: 15px
@@ -89,7 +89,7 @@
 
     25% {
         fill-opacity: 0;
-        stroke: #9b4dca
+        stroke: #1834c8
     }
 
     to {
@@ -120,7 +120,7 @@
 }
 
 .footer .nav .icon {
-    fill: #9b4dca;
+    fill: #1834c8;
     height: 2rem
 }
 
@@ -167,7 +167,7 @@
 }
 
 .navigation .img {
-    fill: #9b4dca;
+    fill: #1834c8;
     height: 2rem;
     position: relative;
     top: .3rem
@@ -194,7 +194,7 @@
 .octocat {
     border: 0;
     color: #f4f5f6;
-    fill: #9b4dca;
+    fill: #1834c8;
     height: 5.2rem;
     position: fixed;
     right: 0;
@@ -295,8 +295,8 @@
 }
 
 .popover .popover-link:hover {
-    background: #9b4dca;
-    border-bottom-color: #9b4dca;
+    background: #1834c8;
+    border-bottom-color: #1834c8;
     color: #fff
 }
 
@@ -315,7 +315,7 @@
 }
 
 .share-dialog {
-    background-color: #9b4dca;
+    background-color: #1834c8;
     border-radius: .4rem;
     color: #fff;
     display: block;
@@ -341,7 +341,7 @@
 
 .prettyprint.code {
     border: 0;
-    border-left: .3rem solid #9b4dca;
+    border-left: .3rem solid #1834c8;
     color: #655d5d;
     position: relative
 }
@@ -363,7 +363,7 @@
 }
 
 .prettyprint.code .lit {
-    color: #9b4dca
+    color: #1834c8
 }
 
 .prettyprint.code .pun {
@@ -375,7 +375,7 @@
 }
 
 .prettyprint.code .atn,.prettyprint.code .tag {
-    color: #9b4dca
+    color: #1834c8
 }
 
 .prettyprint.code .atv {
@@ -616,13 +616,13 @@
 }
 
 .panel-primary {
-	border: 1px solid #9b4dca;
+	border: 1px solid #1834c8;
 }
 
 .panel-primary > .panel-heading,
     .panel-primary > .panel-footer {
-	background-color: #9b4dca;
-	border-color: #9b4dca;
+	background-color: #1834c8;
+	border-color: #1834c8;
 	color: #FFF;
 }
 
@@ -648,11 +648,11 @@
 
 
 .panel-outline {
-	border: 1px solid #9b4dca;
+	border: 1px solid #1834c8;
 }
 
 .panel-outline > .panel-heading,
 .panel-outline > .panel-footer {
-	border-color: #9b4dca;
-	color: #9b4dca;
+	border-color: #1834c8;
+	color: #1834c8;
 }

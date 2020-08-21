@@ -8,8 +8,8 @@
             <label for="fieldSacolao">Sacolao</label>
             <ol class="input-sacolao">
               <li>
-                <input type="radio" id="sacolao50" value="50" v-model="venda.sacolao" />
-                <label for="sacolao50">50</label>
+                <input type="radio" id="sacolao60" value="60" v-model="venda.sacolao" />
+                <label for="sacolao60">60</label>
               </li>
 
               <li>
@@ -37,10 +37,8 @@
           <div class="column column-50">
             <label for="fieldCompras">Compras</label>
             <input
-              type="number"
-              step="0.01"
-              v-model="venda.compras"
-              placeholder="00,00"
+              v-model.lazy="venda.compras"
+              v-money="money"
               id="fieldCompras"
             />
           </div>
@@ -52,12 +50,7 @@
           </div>
           <div class="column column-50">
             <label for="fieldTelefone">Telefone</label>
-            <input
-              type="number"
-              v-model="venda.telefone"
-              placeholder="Telefone"
-              id="fieldTelefone"
-            />
+            <input type="number" v-model="venda.telefone" placeholder="Telefone" id="fieldTelefone" />
           </div>
         </div>
 
@@ -76,12 +69,7 @@
         <div class="row">
           <div class="column column-50">
             <label for="fieldNumero">Número</label>
-            <input
-              type="text"
-              v-model="venda.numero"
-              placeholder="Número"
-              id="fieldNumero"
-            />
+            <input type="text" v-model="venda.numero" placeholder="Número" id="fieldNumero" />
           </div>
           <div class="column column-50">
             <label for="fieldBairro">Bairro</label>
@@ -130,8 +118,8 @@
           </div>
           <div class="column" v-if="venda.levarTroco">
             <input
-              type="number"
-              v-model="venda.troco"
+              v-money="money"
+              v-model.lazy="venda.troco"
               placeholder="Troco Para"
               id="fieldTroco"
               required
@@ -159,7 +147,8 @@
       </article>
 
       <div class="column form-footer">
-        <button class="button">Salvar</button>
+        <button class="button button-lg">Imprimir</button>
+        <button type="button" class="button">Novo</button>
       </div>
     </form>
   </div>
@@ -167,23 +156,37 @@
 
 <script>
 import { $venda } from "@/services/Resources";
+import { VMoney } from "v-money";
+import print from "../utils/Printer";
 
 export default {
   name: "Venda",
+  directives: { money: VMoney },
   data() {
     return {
-      venda: {}
+      venda: {},
+      money: {
+        decimal: ",",
+        thousands: ".",
+        prefix: "R$ ",
+        suffix: "",
+        precision: 2,
+        masked: false,
+      },
     };
   },
   methods: {
-    save: function() {
+    save: function () {
       console.log(this.venda);
-      $venda.save(this.venda).then(res => {
+      $venda.save(this.venda).then((res) => {
         console.log(res);
-        this.venda = {};
+        this.imprimir();
       });
-    }
-  }
+    },
+    imprimir: function () {
+      print(this.venda);
+    },
+  },
 };
 </script>
 
@@ -264,7 +267,7 @@ input[type="checkbox"] {
 ol.input-sacolao li label,
 input[type="checkbox"] + label {
   border-radius: 4px;
-  border: 2px solid #9b4dca;
+  border: 2px solid #1834c8;
   padding: 15px;
 }
 
@@ -276,7 +279,25 @@ input[type="checkbox"]:disabled + label {
 
 ol.input-sacolao li input:checked + label,
 input[type="checkbox"]:checked + label {
-  background: #9b4dca;
+  background: #1834c8;
   color: white;
+}
+/* .form-footer {
+  position: fixed;
+  width: 200px;
+  height: 100vh;
+  display: block;
+  right: 10px;
+  top: 50px;
+}
+.form-footer button {
+  font-size: 20px;
+  text-align: right;
+  padding: 30px ;
+  height: auto;
+} */
+.form-footer button {
+  margin: 5px;
+  font-size: 16px;
 }
 </style>
