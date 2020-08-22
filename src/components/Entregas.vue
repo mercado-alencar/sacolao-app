@@ -32,6 +32,7 @@
 
 <script>
 import { $venda } from "@/services/Resources";
+import print from "../utils/Printer";
 export default {
   name: "Entregas",
   data() {
@@ -59,6 +60,9 @@ export default {
           alert(JSON.stringify(err));
         });
     },
+    reimprimir($event, item) {
+      print(item);
+    }
   },
 };
 </script>

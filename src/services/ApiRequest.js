@@ -2,6 +2,8 @@ import Request from '@schirrel/request/Request.js';
 import RequestObservable from '@/services/RequestObservable.js';
 import { uniqueId } from '../utils/Util.js';
 const defaultURL = "https://mercadoalencar-sacolao.herokuapp.com";
+// const defaultURL = "https://localhost:8081";
+
 export default class APIRequest {
 
     constructor(uri, useDefault, globalRequests) {

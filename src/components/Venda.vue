@@ -38,19 +38,19 @@
             <label for="fieldCompras">Compras</label>
             <input
               v-model.lazy="venda.compras"
-              v-money="money"
-              id="fieldCompras"
+              v-money="money" 
+              id="fieldCompras" focusable
             />
           </div>
         </div>
         <div class="row">
           <div class="column column-50">
             <label for="fieldNome">Nome</label>
-            <input type="text" v-model="venda.nome" placeholder="Nome" id="fieldNome" required />
+            <input type="text" v-model="venda.nome" placeholder="Nome" id="fieldNome" required focusable/>
           </div>
           <div class="column column-50">
             <label for="fieldTelefone">Telefone</label>
-            <input type="number" v-model="venda.telefone" placeholder="Telefone" id="fieldTelefone" />
+            <input type="number" v-model="venda.telefone" placeholder="Telefone" id="fieldTelefone" focusable />
           </div>
         </div>
 
@@ -61,7 +61,7 @@
               type="text"
               v-model="venda.endereco"
               placeholder="Endereço"
-              id="fieldEndereco"
+              id="fieldEndereco" focusable
               required
             />
           </div>
@@ -69,7 +69,7 @@
         <div class="row">
           <div class="column column-50">
             <label for="fieldNumero">Número</label>
-            <input type="text" v-model="venda.numero" placeholder="Número" id="fieldNumero" />
+            <input type="text" v-model="venda.numero" placeholder="Número" id="fieldNumero" focusable/>
           </div>
           <div class="column column-50">
             <label for="fieldBairro">Bairro</label>
@@ -78,7 +78,7 @@
               v-model="venda.bairro"
               placeholder="Bairro"
               id="fieldBairro"
-              required
+              required focusable
             />
           </div>
         </div>
@@ -89,13 +89,13 @@
               type="text"
               v-model="venda.referencia"
               placeholder="Referência"
-              id="fieldReferencia"
+              id="fieldReferencia" focusable
             />
           </div>
         </div>
         <div class="row">
           <div class="column">
-            <input type="checkbox" id="fieldAReceber" v-model="venda.receber" />
+            <input type="checkbox" id="fieldAReceber" v-model="venda.receber"   />
             <label for="fieldAReceber">A Receber</label>
           </div>
           <div class="column">
@@ -119,7 +119,7 @@
           <div class="column" v-if="venda.levarTroco">
             <input
               v-money="money"
-              v-model.lazy="venda.troco"
+              v-model.lazy="venda.trocoPara"
               placeholder="Troco Para"
               id="fieldTroco"
               required
@@ -130,24 +130,24 @@
         <div class="row">
           <div class="column">
             <label for="fieldObs">OBS</label>
-            <textarea v-model="venda.obs" placeholder="OBS" id="fieldObs" />
+            <textarea v-model="venda.obs" placeholder="OBS" id="fieldObs" focusable />
           </div>
         </div>
 
         <div class="row">
           <div class="column column-50">
             <label for="fieldData">Data</label>
-            <input type="date" v-model="venda.data" placeholder="Data" id="fieldData" />
+            <input type="date" v-model="venda.data" placeholder="Data" id="fieldData" focusable/>
           </div>
           <div class="column column-50">
             <label for="fieldHora">Hora</label>
-            <input type="time" v-model="venda.hora" placeholder="Hora" id="fieldHora" />
+            <input type="time" v-model="venda.hora" placeholder="Hora" id="fieldHora" focusable/>
           </div>
         </div>
       </article>
 
       <div class="column form-footer">
-        <button class="button button-lg">Imprimir</button>
+        <button class="button button-lg" focusable>Imprimir</button>
         <button type="button" class="button">Novo</button>
       </div>
     </form>
@@ -175,13 +175,33 @@ export default {
       },
     };
   },
-  methods: {
-    save: function () {
-      console.log(this.venda);
-      $venda.save(this.venda).then((res) => {
-        console.log(res);
-        this.imprimir();
+  mounted() {
+     document.addEventListener('keypress', function (e) {
+            if (e.keyCode === 13 || e.which === 13) {
+                e.preventDefault();
+                return false;
+            }
+            
+        });
+    const focusable = Array.from(document.querySelectorAll('[focusable]'));
+   focusable.forEach((item , index )=> {
+      item.addEventListener ("keypress", (e)=>{
+        if(e.which == 13) {
+            e.preventDefault();
+            if(focusable.length > index+1) {
+              focusable[index+1].focus();
+            }
+        }
       });
+    });
+  },
+  methods: {
+   
+    save: function () {
+      this.imprimir();
+      $venda.save(this.venda).then((res) => {
+        console.log("Salvo");
+      }).catch(err=>console.error(err));
     },
     imprimir: function () {
       print(this.venda);
@@ -269,6 +289,7 @@ input[type="checkbox"] + label {
   border-radius: 4px;
   border: 2px solid #1834c8;
   padding: 15px;
+  cursor: pointer;
 }
 
 input[type="checkbox"]:disabled + label {

@@ -5,7 +5,7 @@
       
     </section>
     <footer>
-    Feito por BAT co.
+    Mercado Alencar - Desenvolvimento <a href="http://schirrel.dev">@schirrel </a>
       </footer>
   </main>
   

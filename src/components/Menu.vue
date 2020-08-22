@@ -15,14 +15,6 @@
         <li class="navigation-item">
           <router-link class="navigation-link" to="/rotas">Rotas </router-link>
         </li>
-  
-
-           <li class="navigation-item">
-          <a class="navigation-link" href="#popover-me" data-popover=""
-            >Me</a
-          >
-        </li>
-
       </ul>
     </section>
   </nav>
