@@ -272,7 +272,7 @@ export default {
       $venda
         .save(this.venda)
         .then((res) => {
-          console.log("Salvo");
+           print(this.venda);
         })
         .catch((err) => console.error(err));
     },
