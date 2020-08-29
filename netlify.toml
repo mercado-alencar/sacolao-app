@@ -1,0 +1,9 @@
+  [context.branch-deploy.environment]
+  NODE_ENV = "development"
+
+  [context.production]
+   command = "npm install"
+  environment = {  NODE_ENV = "development"}
+
+  [build.environment]
+  NODE_ENV = "development"
