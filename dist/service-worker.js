@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.606935c562f5bb4ee404622c2bc71aa8.js"
+  "/precache-manifest.296d49bce0059093e3053ed2507757c0.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "sacolao-web-app"});
