@@ -223,7 +223,7 @@
 <script>
 import { $venda } from "@/services/Resources";
 import { VMoney } from "v-money";
-import { defined, isUndefined , clearMoney} from "@/utils/Util";
+import { defined, isUndefined, clearMoney } from "../utils/Util";
 import print from "@/utils/Printer";
 
 export default {
@@ -240,6 +240,7 @@ export default {
         precision: 2,
         masked: false,
       },
+      toasts: null,
     };
   },
   mounted() {
@@ -263,18 +264,23 @@ export default {
   },
   methods: {
     submit: function () {
-      if (
-        isUndefined(this.venda.sacolao) ||
-        isUndefined(this.venda.pagamento)
-      ) {
-        return;
+      if (this.toasts) {
+        this.toasts.close();
       }
-      $venda
-        .save(this.venda)
-        .then((res) => {
-           print(this.venda);
-        })
-        .catch((err) => console.error(err));
+      if (defined(this.venda.sacolao) || defined(this.venda.pagamento)) {
+        $venda
+          .save(this.venda)
+          .then((res) => {
+            this.toasts = this.$toast.success("Tudo certo!");
+            this.imprimir();
+          })
+          .catch((err) => console.error(err));
+      } else {
+        this.toasts = this.$toast.error(
+          "Esqueceu do valor do sacolão ou das compras?"
+        );
+        console.log("Tem algo errado");
+      }
     },
     imprimir: function () {
       print(this.venda);

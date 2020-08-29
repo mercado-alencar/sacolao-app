@@ -1,4 +1,4 @@
-input[type="date"] {
+/* input[type="date"] {
     webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -10,4 +10,9 @@ input[type="date"] {
     height: 3.8rem;
     padding: .6rem 1.0rem;
     width: 100%;
+} */
+
+
+.v-notices .v-toast .v-toast-text {
+    font-size: 2rem !important;
 }

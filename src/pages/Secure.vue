@@ -22,7 +22,6 @@ export default {
     };
   },
   mounted() {
-    console.log("mounted");
     watchRequest(stillLoading => {
       this.loading = stillLoading;
     });

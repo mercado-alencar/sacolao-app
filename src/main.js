@@ -3,7 +3,18 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-default.css';
+import './assets/styles.css';
+
 Vue.config.productionTip = false
+
+Vue.use(VueToast, {  
+  position: 'top',
+  duration: 10000,
+  queue: true,
+});
 
 new Vue({
   router,

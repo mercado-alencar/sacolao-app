@@ -23,6 +23,7 @@ const convert = (model) => {
       : 0;
     printable.horaEntrega = printable.horaEntrega || "Qualquer hora";
     printable.obs = printable.obs || "";
+    printable.telefone = printable.telefone || "";
     printable.referencia = printable.referencia || "";
     printable.dataEntrega = ""; //.dataEntrega.getDay() +'\\' + venda.dataEntrega.getUTCMonth()+'\\' +venda.dataEntrega.getUTCFullYear();
 
