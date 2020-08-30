@@ -7,7 +7,7 @@
 <footer class="page-footer font-small bg-dark pt-4">
 
    <!-- Copyright -->
-  <div class="footer-copyright text-center text-light  py-3">Desenvolvido por
+  <div class="footer-copyright text-center text-light  py-3">Versão {{version}} - Desenvolvido por
     <a href="https://schirrel.dev"> @schirrel</a>
   </div>
   <!-- Copyright -->
@@ -22,7 +22,9 @@ export default {
   name: "App",
   components: {},
   data() {
-    return {};
+    return {
+      version: process.env.PACKAGE_VERSION || '0.0.0'
+    };
   },
 };
 </script>
