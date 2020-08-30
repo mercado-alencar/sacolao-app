@@ -41,7 +41,7 @@ import Auth from '../services/Auth';
             }
         },
         methods: {
-            doLogin : function(evt) {
+            doLogin : function() {
                 Auth.login(this.auth, ()=>{
                     this.$router.push('/')
                 })

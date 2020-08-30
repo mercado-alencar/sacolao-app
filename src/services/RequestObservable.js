@@ -15,7 +15,7 @@ export default class RequestObservable {
         return id;
     }
     callObservables() {
-        for (var [key, value] of this.observables) {
+        for (var [value] of this.observables) {
             value(!!this.requests.size);
         }
     }

@@ -15,7 +15,7 @@ export default class Storage {
                 resolve();
             } catch (err) {
                 reject(err);
-            };
+            }
         });        
     }
 
@@ -26,7 +26,7 @@ export default class Storage {
                 resolve();
             } catch (err) {
                 reject(err);
-            };
+            }
         });  
     }
 
@@ -41,7 +41,7 @@ export default class Storage {
                 resolve();
             } catch (err) {
                 reject(err);
-            };
+            }
         }); 
     }
 }
