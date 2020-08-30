@@ -7,7 +7,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "open": "http-server ./dist",
+    "deploy" : "build && open"
   },
   "dependencies": {
     "core-js": "^3.6.5",

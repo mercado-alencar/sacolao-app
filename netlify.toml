@@ -1,8 +1,11 @@
+  base = "/"
+  publish = "dist"
+  command = "npm install"
+
   [context.branch-deploy.environment]
   NODE_ENV = "development"
 
   [context.production]
-   command = "npm install"
   environment = {  NODE_ENV = "development"}
 
   [build.environment]
