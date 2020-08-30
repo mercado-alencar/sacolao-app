@@ -3,10 +3,17 @@
     <section class="app-container">
       <router-view></router-view>
     </section>
-    <footer>
-      Mercado Alencar - Desenvolvimento
-      <a href="http://schirrel.dev">@schirrel</a>
-    </footer>
+  <!-- Footer -->
+<footer class="page-footer font-small bg-dark pt-4">
+
+   <!-- Copyright -->
+  <div class="footer-copyright text-center text-light  py-3">Desenvolvido por
+    <a href="https://schirrel.dev"> @schirrel</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
   </main>
 </template>
 

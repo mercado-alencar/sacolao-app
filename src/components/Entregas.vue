@@ -1,6 +1,5 @@
 <template>
   <div class="content">
-    <h1 v-show="loading">Carregando</h1>
 
     <ol v-show="!loading">
       <template

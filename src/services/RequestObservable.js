@@ -15,7 +15,8 @@ export default class RequestObservable {
         return id;
     }
     callObservables() {
-        for (var [value] of this.observables) {
+        // eslint-disable-next-line no-unused-vars
+        for (var [key, value] of this.observables) {
             value(!!this.requests.size);
         }
     }

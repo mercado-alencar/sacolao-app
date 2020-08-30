@@ -37,13 +37,20 @@
 
           <div class="form-group col-12 col-md-6">
             <label for="fieldCompras">Compras</label>
-            <input class="form-control" v-model.lazy="venda.compras" v-money="money" id="fieldCompras" focusable />
+            <input
+              class="form-control"
+              v-model.lazy="venda.compras"
+              v-money="money"
+              id="fieldCompras"
+              focusable
+            />
           </div>
         </div>
         <div class="row">
           <div class="form-group col-12 col-md-6">
             <label for="fieldNome">Nome</label>
-            <input class="form-control"
+            <input
+              class="form-control"
               type="text"
               v-model="venda.nome"
               placeholder="Nome"
@@ -54,7 +61,8 @@
           </div>
           <div class="form-group col-12 col-md-6">
             <label for="fieldTelefone">Telefone</label>
-            <input class="form-control"
+            <input
+              class="form-control"
               type="number"
               v-model="venda.telefone"
               placeholder="Telefone"
@@ -68,7 +76,8 @@
           <div class="form-group col-12">
             <label for="fieldEndereco">Endereço</label>
             <input
-              type="text" class="form-control"
+              type="text"
+              class="form-control"
               v-model="venda.endereco"
               placeholder="Endereço"
               id="fieldEndereco"
@@ -81,7 +90,8 @@
           <div class="form-group col-12 col-md-6">
             <label for="fieldNumero">Número</label>
             <input
-              type="text" class="form-control"
+              type="text"
+              class="form-control"
               v-model="venda.numero"
               placeholder="Número"
               id="fieldNumero"
@@ -91,7 +101,8 @@
           <div class="form-group col-12 col-md-6">
             <label for="fieldBairro">Bairro</label>
             <input
-              type="text" class="form-control"
+              type="text"
+              class="form-control"
               v-model="venda.bairro"
               placeholder="Bairro"
               id="fieldBairro"
@@ -104,7 +115,8 @@
           <div class="form-group col-12">
             <label for="fieldReferencia">Referência</label>
             <input
-              type="text" class="form-control"
+              type="text"
+              class="form-control"
               v-model="venda.referencia"
               placeholder="Referência"
               id="fieldReferencia"
@@ -115,8 +127,9 @@
 
         <div class="row">
           <div class="col-12">
-            <label for="">Pagamento</label></div>
-           
+            <label for>Pagamento</label>
+          </div>
+
           <div class="form-group col-12 col-sm-4">
             <input
               type="radio"
@@ -129,7 +142,8 @@
             <div v-if="venda.receber" class="form-group">
               <label for="fieldTroco">Troco Para</label>
               <input
-                v-money="money" class="form-control"
+                v-money="money"
+                class="form-control"
                 v-model.lazy="venda.trocoPara"
                 placeholder="Troco Para"
                 id="fieldTroco"
@@ -165,18 +179,38 @@
         <div class="row">
           <div class="form-group col-12">
             <label for="fieldObs">OBS</label>
-            <textarea class="form-control" v-model="venda.obs" placeholder="OBS" id="fieldObs" focusable />
+            <textarea
+              class="form-control"
+              v-model="venda.obs"
+              placeholder="OBS"
+              id="fieldObs"
+              focusable
+            />
           </div>
         </div>
 
         <div class="row">
           <div class="form-group col-12 col-md-6">
             <label for="fieldData">Data</label>
-            <input type="date" class="form-control" v-model="venda.data" placeholder="Data" id="fieldData" focusable />
+            <input
+              type="date"
+              class="form-control"
+              v-model="venda.data"
+              placeholder="Data"
+              id="fieldData"
+              focusable
+            />
           </div>
           <div class="form-group col-12 col-md-6">
             <label for="fieldHora">Hora</label>
-            <input type="time" class="form-control" v-model="venda.hora" placeholder="Hora" id="fieldHora" focusable />
+            <input
+              type="time"
+              class="form-control"
+              v-model="venda.hora"
+              placeholder="Hora"
+              id="fieldHora"
+              focusable
+            />
           </div>
         </div>
       </article>
@@ -243,6 +277,10 @@ export default {
           .then(() => {
             this.toasts = this.$toast.success("Tudo certo!");
             this.imprimir();
+            // eslint-disable-next-line no-undef
+            setTimeout(() => {
+              this.novo();
+            });
           })
           .catch((err) => console.error(err));
       } else {
