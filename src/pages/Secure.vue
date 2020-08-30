@@ -1,10 +1,13 @@
 <template>
   <main id="app">
-    <section class="app-container">
-      <app-menu></app-menu>
-      <div class="loading-overlay" v-bind:class="{ hide: !loading}"></div>
-      <router-view></router-view>
-    </section>
+    <app-menu></app-menu>
+    <!-- TODO Separar em outro componente -->
+    <div class="loading-overlay" v-bind:class="{ hide: !loading}">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <router-view class="main-content container"></router-view>
   </main>
 </template>
 
@@ -14,38 +17,23 @@ import { watchRequest } from "@/services/Resources";
 export default {
   name: "App",
   components: {
-    "app-menu": Menu
+    "app-menu": Menu,
   },
   data() {
     return {
-      loading: false
+      loading: false,
     };
   },
   mounted() {
-    watchRequest(stillLoading => {
+    watchRequest((stillLoading) => {
       this.loading = stillLoading;
     });
-  }
+  },
 };
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
 
-main,
-section {
-  position: relative;
-  margin: 0px;
-}
-.app-container {
-  margin-top: 60px;
-  min-height: calc(100vh - 120px);
-}
 .loading-overlay {
   position: fixed;
   padding: 0;
@@ -66,5 +54,11 @@ section {
   width: 0 !important;
   padding: 0;
   overflow: hidden;
+}
+.main-content {
+  min-height: calc(100% - 150px);
+}
+main {
+  min-height: 90vh;
 }
 </style>

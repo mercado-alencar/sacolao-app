@@ -4,8 +4,8 @@
       <article>
         <h4>Nova Venda</h4>
         <div class="row">
-          <div class="column column-50">
-            <label for="fieldSacolao">Sacolao</label>
+          <div class="form-group col-12 col-md-6">
+            <label for="fieldSacolao">Sacolão</label>
             <ol class="input-sacolao">
               <li>
                 <input type="radio" id="sacolao60" value="60" v-model="venda.sacolao" />
@@ -35,15 +35,15 @@
             </ol>
           </div>
 
-          <div class="column column-50">
+          <div class="form-group col-12 col-md-6">
             <label for="fieldCompras">Compras</label>
-            <input v-model.lazy="venda.compras" v-money="money" id="fieldCompras" focusable />
+            <input class="form-control" v-model.lazy="venda.compras" v-money="money" id="fieldCompras" focusable />
           </div>
         </div>
         <div class="row">
-          <div class="column column-50">
+          <div class="form-group col-12 col-md-6">
             <label for="fieldNome">Nome</label>
-            <input
+            <input class="form-control"
               type="text"
               v-model="venda.nome"
               placeholder="Nome"
@@ -52,9 +52,9 @@
               focusable
             />
           </div>
-          <div class="column column-50">
+          <div class="form-group col-12 col-md-6">
             <label for="fieldTelefone">Telefone</label>
-            <input
+            <input class="form-control"
               type="number"
               v-model="venda.telefone"
               placeholder="Telefone"
@@ -65,10 +65,10 @@
         </div>
 
         <div class="row">
-          <div class="column">
+          <div class="form-group col-12">
             <label for="fieldEndereco">Endereço</label>
             <input
-              type="text"
+              type="text" class="form-control"
               v-model="venda.endereco"
               placeholder="Endereço"
               id="fieldEndereco"
@@ -78,20 +78,20 @@
           </div>
         </div>
         <div class="row">
-          <div class="column column-50">
+          <div class="form-group col-12 col-md-6">
             <label for="fieldNumero">Número</label>
             <input
-              type="text"
+              type="text" class="form-control"
               v-model="venda.numero"
               placeholder="Número"
               id="fieldNumero"
               focusable
             />
           </div>
-          <div class="column column-50">
+          <div class="form-group col-12 col-md-6">
             <label for="fieldBairro">Bairro</label>
             <input
-              type="text"
+              type="text" class="form-control"
               v-model="venda.bairro"
               placeholder="Bairro"
               id="fieldBairro"
@@ -101,10 +101,10 @@
           </div>
         </div>
         <div class="row">
-          <div class="column">
+          <div class="form-group col-12">
             <label for="fieldReferencia">Referência</label>
             <input
-              type="text"
+              type="text" class="form-control"
               v-model="venda.referencia"
               placeholder="Referência"
               id="fieldReferencia"
@@ -112,42 +112,12 @@
             />
           </div>
         </div>
-        <!-- <div class="row">
-          <div class="column">
-            <input type="checkbox" id="fieldAReceber" v-model="venda.receber" />
-            <label for="fieldAReceber">A Receber</label>
-          </div>
-          <div class="column">
-            <input
-              type="checkbox"
-              id="fieldLevarTroco"
-              v-model="venda.levarTroco"
-              :disabled="!venda.receber || venda.cartao"
-            />
-            <label for="fieldLevarTroco">Levar Troco</label>
-          </div>
-          <div class="column" v-if="!venda.levarTroco">
-            <input
-              type="checkbox"
-              id="fieldPagamentoCartao"
-              v-model="venda.cartao"
-              :disabled="!venda.receber || venda.levarTroco"
-            />
-            <label for="fieldPagamentoCartao">Cartão</label>
-          </div>
-          <div class="column" v-if="venda.levarTroco">
-            <input
-              v-money="money"
-              v-model.lazy="venda.trocoPara"
-              placeholder="Troco Para"
-              id="fieldTroco"
-              required
-            />
-          </div>
-        </div>-->
 
         <div class="row">
-          <div class="column">
+          <div class="col-12">
+            <label for="">Pagamento</label></div>
+           
+          <div class="form-group col-12 col-sm-4">
             <input
               type="radio"
               id="fieldReceber"
@@ -156,10 +126,10 @@
               value="receber"
             />
             <label for="fieldReceber">Dinheiro</label>
-            <div v-if="venda.receber">
+            <div v-if="venda.receber" class="form-group">
               <label for="fieldTroco">Troco Para</label>
               <input
-                v-money="money"
+                v-money="money" class="form-control"
                 v-model.lazy="venda.trocoPara"
                 placeholder="Troco Para"
                 id="fieldTroco"
@@ -169,7 +139,7 @@
             </div>
           </div>
 
-          <div class="column">
+          <div class="form-group col-12 col-sm-4">
             <input
               type="radio"
               id="fieldPagamentoCartao"
@@ -180,7 +150,7 @@
             <label for="fieldPagamentoCartao">Cartão</label>
           </div>
 
-          <div class="column">
+          <div class="form-group col-12 col-sm-4">
             <input
               type="radio"
               id="fieldPago"
@@ -193,28 +163,28 @@
         </div>
 
         <div class="row">
-          <div class="column">
+          <div class="form-group col-12">
             <label for="fieldObs">OBS</label>
-            <textarea v-model="venda.obs" placeholder="OBS" id="fieldObs" focusable />
+            <textarea class="form-control" v-model="venda.obs" placeholder="OBS" id="fieldObs" focusable />
           </div>
         </div>
 
         <div class="row">
-          <div class="column column-50">
+          <div class="form-group col-12 col-md-6">
             <label for="fieldData">Data</label>
-            <input type="date" v-model="venda.data" placeholder="Data" id="fieldData" focusable />
+            <input type="date" class="form-control" v-model="venda.data" placeholder="Data" id="fieldData" focusable />
           </div>
-          <div class="column column-50">
+          <div class="form-group col-12 col-md-6">
             <label for="fieldHora">Hora</label>
-            <input type="time" v-model="venda.hora" placeholder="Hora" id="fieldHora" focusable />
+            <input type="time" class="form-control" v-model="venda.hora" placeholder="Hora" id="fieldHora" focusable />
           </div>
         </div>
       </article>
 
-      <div class="column form-footer">
-        <button class="button button-lg">Imprimir</button>
-        <button class="button" type="button" v-on:click="salvar()">Salvar Somente</button>
-        <button type="button" class="button" v-on:click="novo()">Novo</button>
+      <div class="form-group col-xs-12 form-footer">
+        <button class="btn btn-lg btn-primary">Imprimir</button>
+        <button type="button" class="btn btn-dark" v-on:click="salvar()">Salvar Somente</button>
+        <button type="button" class="btn btn-dark" v-on:click="novo()">Novo</button>
       </div>
     </form>
   </div>
@@ -223,7 +193,7 @@
 <script>
 import { $venda } from "@/services/Resources";
 import { VMoney } from "v-money";
-import { defined, isUndefined, clearMoney } from "../utils/Util";
+import { defined, clearMoney } from "../utils/Util";
 import print from "@/utils/Printer";
 
 export default {
@@ -270,7 +240,7 @@ export default {
       if (defined(this.venda.sacolao) || defined(this.venda.pagamento)) {
         $venda
           .save(this.venda)
-          .then((res) => {
+          .then(() => {
             this.toasts = this.$toast.success("Tudo certo!");
             this.imprimir();
           })
@@ -316,61 +286,6 @@ export default {
 <style scoped>
 * {
   text-align: left;
-}
-tfoot td {
-  text-align: right;
-}
-
-td:first-child,
-th:first-child {
-  max-width: 50px !important;
-}
-
-td button {
-  padding: 0px 5px !important;
-  margin: 0;
-}
-.restart-button {
-  float: left;
-}
-
-.winner {
-  display: inline-block;
-}
-input[type="date"] {
-  webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  border: 0.1rem solid #d1d1d1;
-  border-radius: 0.4rem;
-  box-shadow: none;
-  box-sizing: inherit;
-  height: 3.8rem;
-  padding: 0.6rem 1rem;
-  width: 100%;
-}
-
-.full-width {
-  clear: both;
-}
-
-.quarter-width,
-.three-quarter-width,
-.half-width,
-.three-quarter-width {
-  padding: 0px 5px;
-  float: left;
-}
-
-.three-quarter-width {
-  width: 75%;
-}
-.quarter-width {
-  width: 25%;
-}
-.half-width {
-  width: 50%;
 }
 ol.input-sacolao {
   display: flex;

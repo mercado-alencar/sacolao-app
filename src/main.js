@@ -6,6 +6,8 @@ import router from './router'
 
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-default.css';
+import 'bootstrap/dist/css/bootstrap-reboot.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import './assets/styles.css';
 
 Vue.config.productionTip = false

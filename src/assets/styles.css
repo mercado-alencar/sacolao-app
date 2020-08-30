@@ -1,18 +1,22 @@
-/* input[type="date"] {
-    webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    border: 0.1rem solid #d1d1d1;
-    border-radius: .4rem;
-    box-shadow: none;
-    box-sizing: inherit;
-    height: 3.8rem;
-    padding: .6rem 1.0rem;
-    width: 100%;
-} */
-
+body, html {
+    margin: 0;
+    padding:0;
+}
+html, body {
+    margin: 0 auto;
+    }
+.text-center {
+    text-align: center;
+}
 
 .v-notices .v-toast .v-toast-text {
     font-size: 2rem !important;
+}
+
+.footer {
+    padding: 8rem 0 2rem
+}
+
+.footer .copyright {
+    padding-right: 6rem
 }

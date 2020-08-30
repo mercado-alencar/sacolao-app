@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="content">
     <h1 v-show="loading">Carregando</h1>
 
     <ol v-show="!loading">
@@ -20,9 +20,9 @@
         {{index2}}:  <strong :key="index2"> {{prop}}  </strong> | 
           </template>-->
           <footer>
-            <button @click="reimprimir($event, item)" type="button">Reimprimir</button>
+            <button class="btn btn-dark" @click="reimprimir($event, item)" type="button">Reimprimir</button>
 
-            <button @click="entregue($event, item)" type="button">Entregue</button>
+            <button class="btn btn-primary" @click="entregue($event, item)" type="button">Entregue</button>
           </footer>
         </li>
       </template>

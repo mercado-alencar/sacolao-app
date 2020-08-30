@@ -1,32 +1,26 @@
 <template>
   <main id="app">
     <section class="app-container">
-       <router-view></router-view>
-      
+      <router-view></router-view>
     </section>
     <footer>
-    Mercado Alencar - Desenvolvimento <a href="http://schirrel.dev">@schirrel </a>
-      </footer>
+      Mercado Alencar - Desenvolvimento
+      <a href="http://schirrel.dev">@schirrel</a>
+    </footer>
   </main>
-  
 </template>
 
 <script>
-import Menu from '@/components/Menu'
 export default {
-  name: 'App',
-  components: {
-    'app-menu': Menu
+  name: "App",
+  components: {},
+  data() {
+    return {};
   },
-  data () {
-    return {
-    }
-  }
-}
+};
 </script>
 
 <style>
-@import url('../static/style.css');
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,12 +28,12 @@ export default {
   color: #2c3e50;
 }
 
-main,section{
+main,
+section {
   position: relative;
   margin: 0px;
 }
-.app-container {
-  margin-top: 60px;
-  min-height: calc(100vh - 120px);
+.container {
+  margin: 15px 5px;
 }
 </style>
