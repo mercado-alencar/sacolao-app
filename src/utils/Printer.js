@@ -44,3 +44,4 @@ const printSorteio = (model) => {
     w.document.write(template);
 }
 export default print;
+export printSorteio;
