@@ -1,38 +1,51 @@
 <template>
- <div class="container">
+  <div class="container">
     <form action @submit.prevent="submit">
-        <article>
-            <h4>Sorteio</h4>
+      <article>
+        <h4>Sorteio</h4>
 
-            <div class="row">
-                <div class="form-group col-12 col-md-6">
-                    <label for="fieldNome">Nome</label>
-                    <input class="form-control" type="text" v-model="sorteio.nome" placeholder="Nome" id="fieldNome" required focusable />
-                </div>
-                <div class="form-group col-12 col-md-6">
-                    <label for="fieldTelefone">Telefone</label>
-                    <input class="form-control" type="number" v-model="sorteio.telefone" placeholder="Telefone" id="fieldTelefone" focusable />
-                </div>
-            </div>
-        </article>
-
-        <div class="form-group col-xs-12 form-footer">
-            <button class="btn btn-lg btn-primary">Imprimir</button>
+        <div class="row">
+          <div class="form-group col-12 col-md-6">
+            <label for="fieldNome">Nome</label>
+            <input
+              class="form-control"
+              type="text"
+              v-model="sorteio.nome"
+              placeholder="Nome"
+              id="fieldNome"
+              focusable
+            />
+          </div>
+          <div class="form-group col-12 col-md-6">
+            <label for="fieldTelefone">Telefone</label>
+            <input
+              class="form-control"
+              type="number"
+              v-model="sorteio.telefone"
+              placeholder="Telefone"
+              id="fieldTelefone"
+              focusable
+            />
+          </div>
         </div>
-    </form>
-</div>
+      </article>
 
+      <div class="form-group col-xs-12 form-footer">
+        <button class="btn btn-lg btn-primary">Imprimir</button>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
 import { $sorteio } from "@/services/Resources";
-import printSorteio from "@/utils/Printer";
+import { printSorteio } from "@/utils/Printer";
 
 export default {
   name: "Sorteio",
   data() {
     return {
-      sorteio: {},    
+      sorteio: {},
       toasts: null,
     };
   },
@@ -60,26 +73,25 @@ export default {
       if (this.toasts) {
         this.toasts.close();
       }
-       $sorteio
-          .save(this.sorteio)
-          .then(() => {
-            this.toasts = this.$toast.success("Tudo certo!");
-            this.imprimir();
-            // eslint-disable-next-line no-undef
-            setTimeout(() => {
-              this.novo();
-            });
-          })
-          .catch((err) => console.error(err));
-     
+      $sorteio
+        .save(this.sorteio)
+        .then((res) => {
+          this.toasts = this.$toast.success("Tudo certo!");
+          this.imprimir(res);
+          // eslint-disable-next-line no-undef
+          setTimeout(() => {
+            this.novo();
+          });
+        })
+        .catch((err) => console.error(err));
     },
-    imprimir: function () {
-      printSorteio(this.sorteio);
+    imprimir: function (res) {
+      printSorteio(res);
     },
     novo: function () {
       this.sorteio = {};
-    }
-  }
+    },
+  },
 };
 </script>
 
