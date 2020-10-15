@@ -51,7 +51,7 @@ export default class APIRequest {
         if (model.id) {
             return this.perform(Request.put(this.uri + '/' + model.id, { body: JSON.stringify(model) }));
         } else
-            return this.perform(Request.post(this.uri, { body: JSON.stringify(model) }));
+            return this.perform(Request.post(this.uri, { body: JSON.stringify(model) ,  mode: 'cors',}));
     }
     /**
      * 
