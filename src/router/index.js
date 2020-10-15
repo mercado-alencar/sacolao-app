@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 import Venda from '@/components/Venda'
+import Sorteio from '@/components/Sorteio'
 import Entregas from '@/components/Entregas'
 import Rotas from '@/components/Rotas'
 import Login from '@/pages/Login'
@@ -67,7 +68,15 @@ let routes =  [
           title: 'Rotas',
          // secure:true
         }
-      },
+      }, {
+        path: '/sorteio',
+        name: 'secure.sorteio',
+        component: Sorteio,
+        meta: {
+          title: 'Sorteio',
+          //secure:true
+        }
+      }, 
       // {
       //   path: '/item/products',
       //   name: 'secure.item.products',
