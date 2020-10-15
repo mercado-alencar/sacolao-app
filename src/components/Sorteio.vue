@@ -1,44 +1,27 @@
 <template>
-  <div class="container">
+ <div class="container">
     <form action @submit.prevent="submit">
-      <article>
-        <h4>Sorteio</h4>
-       
-        <div class="row">
-          <div class="form-group col-12 col-md-6">
-            <label for="fieldNome">Nome</label>
-            <input
-              class="form-control"
-              type="text"
-              v-model="sorteio.nome"
-              placeholder="Nome"
-              id="fieldNome"
-              required
-              focusable
-            />
-          </div>
-          <div class="form-group col-12 col-md-6">
-            <label for="fieldTelefone">Telefone</label>
-            <input
-              class="form-control"
-              type="number"
-              v-model="sorteio.telefone"
-              placeholder="Telefone"
-              id="fieldTelefone"
-              focusable
-            />
-          </div>
+        <article>
+            <h4>Sorteio</h4>
+
+            <div class="row">
+                <div class="form-group col-12 col-md-6">
+                    <label for="fieldNome">Nome</label>
+                    <input class="form-control" type="text" v-model="sorteio.nome" placeholder="Nome" id="fieldNome" required focusable />
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    <label for="fieldTelefone">Telefone</label>
+                    <input class="form-control" type="number" v-model="sorteio.telefone" placeholder="Telefone" id="fieldTelefone" focusable />
+                </div>
+            </div>
+        </article>
+
+        <div class="form-group col-xs-12 form-footer">
+            <button class="btn btn-lg btn-primary">Imprimir</button>
         </div>
-
-
-        </div>
-      </article>
-
-      <div class="form-group col-xs-12 form-footer">
-        <button class="btn btn-lg btn-primary">Imprimir</button>
-      </div>
     </form>
-  </div>
+</div>
+
 </template>
 
 <script>
