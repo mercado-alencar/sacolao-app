@@ -287,7 +287,6 @@ export default {
         this.toasts = this.$toast.error(
           "Esqueceu do valor do sacolão ou das compras?"
         );
-        console.log("Tem algo errado");
       }
     },
     imprimir: function () {
@@ -301,10 +300,9 @@ export default {
       this.venda.receber = false;
       this.venda.cartao = false;
       this.venda[selected] = true;
-      console.log(selected, JSON.stringify(this.venda));
     },
     setTroco() {
-      console.log(clearMoney(this.venda.trocoPara));
+      clearMoney(this.venda.trocoPara);
     },
   },
   computed: {
