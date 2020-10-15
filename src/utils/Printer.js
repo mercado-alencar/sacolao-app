@@ -38,10 +38,10 @@ const print = (model) => {
     w.document.write(template);
 }
 
-const printSorteio = (model) => {
+const _printSorteio = (model) => {
     var template = createTemplateSorteio(model)
     var w = window.open(template, "wnd");
     w.document.write(template);
 }
 export default print;
-export printSorteio;
+export const printSorteio = _printSorteio;
