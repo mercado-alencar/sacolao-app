@@ -7,31 +7,11 @@
           <div class="form-group col-12 col-md-6">
             <label for="fieldSacolao">Sacolão</label>
             <ol class="input-sacolao">
-              <li>
-                <input type="radio" id="sacolao60" value="60" v-model="venda.sacolao" />
-                <label for="sacolao60">60</label>
+              <li v-for="radio in sacolaoRadios" :key="radio.id">
+                <input type="radio" v-bind:id="radio.id" v-bind:value="radio.value" v-on:click="selectSacolao" v-bind:checked="venda.sacolao == radio.value" />
+                <label v-bind:for="radio.id">{{radio.value}}</label>
               </li>
-
-              <li>
-                <input type="radio" id="sacolao100" value="100" v-model="venda.sacolao" />
-                <label for="sacolao100">100</label>
-              </li>
-
-              <li>
-                <input type="radio" id="sacolao150" value="150" v-model="venda.sacolao" />
-                <label for="sacolao150">150</label>
-              </li>
-
-              <li>
-                <input type="radio" id="sacolao200" value="200" v-model="venda.sacolao" />
-                <label for="sacolao200">200</label>
-              </li>
-
-              <li>
-                <input type="radio" id="sacolao300" value="300" v-model="venda.sacolao" />
-                <label for="sacolao300">300</label>
-              </li>
-              <input type="hidden" name="sacolao" required :value="venda.sacolao" />
+              <input type="hidden" name="sacolao" required v-bind:value="venda.sacolao" />
             </ol>
           </div>
 
@@ -235,7 +215,16 @@ export default {
   directives: { money: VMoney },
   data() {
     return {
-      venda: {},
+      sacolaoRadios: [
+        { id: 'sacolao60', value: 60 },
+        { id: 'sacolao100', value: 100 },
+        { id: 'sacolao150', value: 150 },
+        { id: 'sacolao200', value: 200 },
+        { id: 'sacolao300', value: 300 }
+      ],
+      venda: {
+        sacolao: null
+      },
       money: {
         decimal: ",",
         thousands: ".",
@@ -271,7 +260,7 @@ export default {
       if (this.toasts) {
         this.toasts.close();
       }
-      if (defined(this.venda.sacolao) || defined(this.venda.pagamento)) {
+      if (this.venda.sacolao || defined(this.venda.pagamento)) {
         $venda
           .save(this.venda)
           .then(() => {
@@ -293,7 +282,7 @@ export default {
       print(this.venda);
     },
     novo: function () {
-      this.venda = {};
+      this.venda = { sacolao: null };
     },
     updatePagamento(selected) {
       this.venda.pago = false;
@@ -304,6 +293,10 @@ export default {
     setTroco() {
       clearMoney(this.venda.trocoPara);
     },
+    selectSacolao(event) {
+      let selectedValue = event.target.value;
+      this.venda.sacolao = this.venda.sacolao === selectedValue ? null : selectedValue;
+    }
   },
   computed: {
     pagamento() {
