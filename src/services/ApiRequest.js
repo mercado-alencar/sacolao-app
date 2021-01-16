@@ -69,6 +69,7 @@ export default class APIRequest {
      * @returns Promise
      */
     search(params) {
+        params.mode: 'no-cors';
         return this.perform(Request.get(this.uri + '/search', params))
     }
 }
