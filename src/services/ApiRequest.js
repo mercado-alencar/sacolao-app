@@ -1,8 +1,8 @@
 import Request from '@schirrel/request/Request.js';
 import RequestObservable from '@/services/RequestObservable.js';
 import { uniqueId } from '../utils/Util.js';
-const defaultURL = "https://mercadoalencar-sacolao.herokuapp.com";
-//const defaultURL = "http://localhost:8081";
+//const defaultURL = "https://mercadoalencar-sacolao.herokuapp.com";
+const defaultURL = "http://localhost:8081";
 
 export default class APIRequest {
 
@@ -69,7 +69,6 @@ export default class APIRequest {
      * @returns Promise
      */
     search(params) {
-        params.mode: 'no-cors';
-        return this.perform(Request.get(this.uri + '/search', params))
+        return this.perform(Request.get(this.uri + '/search', params, {mode:'no-cors'}))
     }
 }
