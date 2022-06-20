@@ -1,27 +1,48 @@
 <template>
   <div class="content">
-
     <ol v-show="!loading">
       <template
         v-show="data.collection && data.collection.length"
         v-for="(item, index) in data.collection"
       >
         <li :key="index">
-          <h3>{{item.nome}} ({{item.sacolao ? "Sacolão "+item.sacolao :""}} {{ item.compras ? "Compras R$"+item.compras:""}}) - Bairro {{item.bairro }}</h3>
+          <h3>
+            {{ item.nome }} ({{
+              item.sacolao ? "Sacolão " + item.sacolao : ""
+            }}
+            {{ item.compras ? "Compras R$" + item.compras : "" }}) - Bairro
+            {{ item.bairro }}
+          </h3>
           <div>
             Endereço:
-            <strong>{{item.endereco}} {{item.numero ? ", Nº"+item.numero:""}} {{item.bairro ? ", bairro "+item.bairro+".":""}}</strong>
+            <strong
+              >{{ item.endereco }}
+              {{ item.numero ? ", Nº" + item.numero : "" }}
+              {{ item.bairro ? ", bairro " + item.bairro + "." : "" }}</strong
+            >
             <br />
-            <span v-if="item.referencia">Referência:{{item.referencia}}</span>
+            <span v-if="item.referencia">Referência:{{ item.referencia }}</span>
           </div>
           <!--  <template         
           v-for="(prop, index2) of item">
         {{index2}}:  <strong :key="index2"> {{prop}}  </strong> | 
           </template>-->
           <footer>
-            <button class="btn btn-dark" @click="reimprimir($event, item)" type="button">Reimprimir</button>
+            <button
+              class="btn btn-dark"
+              @click="reimprimir($event, item)"
+              type="button"
+            >
+              Reimprimir
+            </button>
 
-            <button class="btn btn-primary" @click="entregue($event, item)" type="button">Entregue</button>
+            <button
+              class="btn btn-primary"
+              @click="entregue($event, item)"
+              type="button"
+            >
+              Entregue
+            </button>
           </footer>
         </li>
       </template>
@@ -32,6 +53,8 @@
 <script>
 import { $venda } from "@/services/Resources";
 import print from "../utils/Printer";
+import axios from "axios";
+
 export default {
   name: "Entregas",
   data() {
@@ -46,10 +69,14 @@ export default {
   },
   methods: {
     listar() {
-      // this.data = { collection: [] };
-      $venda.search({ entregue: false }).then((res) => {
-        this.data = { collection: res };
-      });
+
+      axios
+        .get(
+          "https://mercadoalencar-sacolao.herokuapp.com/api/venda/search?entregue=false"
+        )
+        .then((res) => {
+          this.data = { collection: res.data };
+        });
     },
     entregue($event, item) {
       $venda.entrega
@@ -61,7 +88,7 @@ export default {
     },
     reimprimir($event, item) {
       print(item);
-    }
+    },
   },
 };
 </script>
