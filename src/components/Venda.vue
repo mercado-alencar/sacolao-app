@@ -8,30 +8,69 @@
             <label for="fieldSacolao">Sacolão</label>
             <ol class="input-sacolao">
               <li>
-                <input type="radio" id="sacolao60" value="60" v-model="venda.sacolao" />
-                <label for="sacolao60">60</label>
-              </li>
-
-              <li>
-                <input type="radio" id="sacolao100" value="100" v-model="venda.sacolao" />
+                <input
+                  type="radio"
+                  id="sacolao100"
+                  value="100"
+                  v-model="venda.sacolao"
+                />
                 <label for="sacolao100">100</label>
               </li>
 
               <li>
-                <input type="radio" id="sacolao150" value="150" v-model="venda.sacolao" />
+                <input
+                  type="radio"
+                  id="sacolao150"
+                  value="150"
+                  v-model="venda.sacolao"
+                />
                 <label for="sacolao150">150</label>
               </li>
 
               <li>
-                <input type="radio" id="sacolao200" value="200" v-model="venda.sacolao" />
+                <input
+                  type="radio"
+                  id="sacolao200"
+                  value="200"
+                  v-model="venda.sacolao"
+                />
                 <label for="sacolao200">200</label>
               </li>
 
               <li>
-                <input type="radio" id="sacolao300" value="300" v-model="venda.sacolao" />
+                <input
+                  type="radio"
+                  id="sacolao300"
+                  value="300"
+                  v-model="venda.sacolao"
+                />
                 <label for="sacolao300">300</label>
               </li>
-              <input type="hidden" name="sacolao" required :value="venda.sacolao" />
+              <li>
+                <input
+                  type="radio"
+                  id="sacolao350"
+                  value="350"
+                  v-model="venda.sacolao"
+                />
+                <label for="sacolao350">350</label>
+              </li>
+              <li>
+                <input
+                  type="radio"
+                  id="sacolao450"
+                  value="450"
+                  v-model="venda.sacolao"
+                />
+                <label for="sacolao450">450</label>
+              </li>
+
+              <input
+                type="hidden"
+                name="sacolao"
+                required
+                :value="venda.sacolao"
+              />
             </ol>
           </div>
 
@@ -188,8 +227,10 @@
             />
           </div>
         </div>
-
+        <hr />
         <div class="row">
+          <h5>Agendamento de entrega:</h5>
+         
           <div class="form-group col-12 col-md-6">
             <label for="fieldData">Data</label>
             <input
@@ -217,8 +258,12 @@
 
       <div class="form-group col-xs-12 form-footer">
         <button class="btn btn-lg btn-primary">Imprimir</button>
-        <button type="button" class="btn btn-dark" v-on:click="salvar()">Salvar Somente</button>
-        <button type="button" class="btn btn-dark" v-on:click="novo()">Novo</button>
+        <button type="button" class="btn btn-dark" v-on:click="salvar()">
+          Salvar Somente
+        </button>
+        <button type="button" class="btn btn-dark" v-on:click="novo()">
+          Novo
+        </button>
       </div>
     </form>
   </div>
@@ -249,7 +294,7 @@ export default {
   },
   mounted() {
     document.addEventListener("keypress", function (e) {
-      if (e.keyCode === 13 || e.which === 13) {
+      if (e.code === 13) {
         e.preventDefault();
         return false;
       }
@@ -257,7 +302,7 @@ export default {
     const focusable = Array.from(document.querySelectorAll("[focusable]"));
     focusable.forEach((item, index) => {
       item.addEventListener("keypress", (e) => {
-        if (e.which == 13) {
+        if (e.code == 13) {
           e.preventDefault();
           if (focusable.length > index + 1) {
             focusable[index + 1].focus();
@@ -267,7 +312,7 @@ export default {
     });
   },
   methods: {
-    submit: function () {
+    salvar(print = false) {
       if (this.toasts) {
         this.toasts.close();
       }
@@ -276,8 +321,9 @@ export default {
           .save(this.venda)
           .then(() => {
             this.toasts = this.$toast.success("Tudo certo!");
-            this.imprimir();
-            // eslint-disable-next-line no-undef
+            if (print) {
+              this.imprimir();
+            }
             setTimeout(() => {
               this.novo();
             });
@@ -288,6 +334,9 @@ export default {
           "Esqueceu do valor do sacolão ou das compras?"
         );
       }
+    },
+    submit: function () {
+      this.salvar(true);
     },
     imprimir: function () {
       print(this.venda);

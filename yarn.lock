@@ -934,10 +934,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@schirrel/request@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@schirrel/request/-/request-1.2.0.tgz#ac4f0b1f04df8503bb0a99d2e17cc4a184bedd96"
-  integrity sha512-vwP6c38yeae+VMxog2VHLFk7qblSgSUq9JtDACj1ZeGg8xMFXeP1ejjFSo9tREuQP5G1faZ8oimxd0aWxrOJ+A==
+"@schirrel/request@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@schirrel/request/-/request-1.3.0.tgz#946bcb499d28db6c18f6f07e9abc224b5664b98e"
+  integrity sha512-aLgOvAtBSF2Vs9mlEQbX3JXKEhPCN9Pp32+qozfPmojDZ+czc16GVkAHvjGmGmHdRBFdtk1HxNhX1dkC2JMnHw==
 
 "@soda/friendly-errors-webpack-plugin@^1.7.1":
   version "1.7.1"
@@ -8142,10 +8142,10 @@ vue-toast-notification@^0.5.0:
   resolved "https://registry.yarnpkg.com/vue-toast-notification/-/vue-toast-notification-0.5.0.tgz#6601248bd5211e4369519f22570961076747b8b5"
   integrity sha512-/dCVrd+XXa4bbcauMI51qVIE/P+Z9KkyT6Jt3zVIk5rQ4vpuSD7XPr+DUSTGlY0z2wIzYEFEnboWFW+JBKeMJg==
 
-vue@2.6.11:
-  version "2.6.11"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
-  integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
+vue@2.6.12:
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
+  integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
 
 watchpack-chokidar2@^2.0.0:
   version "2.0.0"
